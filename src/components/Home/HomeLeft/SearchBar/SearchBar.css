@@ -1,0 +1,33 @@
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.search-bar > :nth-child(1) {
+  color: rgb(80, 80, 188);
+  font-size: 2.3rem;
+}
+
+.search-bar > :nth-child(2) {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar > :nth-child(2) > :nth-child(1) {
+  border: none;
+  padding: 0.6rem;
+  background-color: rgb(234, 215, 215);
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.search-bar > :nth-child(2) > :nth-child(2) {
+  position: relative;
+  right: 2rem;
+  background-color: rgb(80, 80, 188);
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
