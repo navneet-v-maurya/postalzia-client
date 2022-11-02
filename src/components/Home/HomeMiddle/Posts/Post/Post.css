@@ -1,0 +1,43 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(135, 222, 225);
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.post > img {
+  width: 100%;
+  height: 20rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.post > :nth-child(2) {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.post > :nth-child(2) > * {
+  font-size: x-large;
+  color: black;
+}
+
+.post > :nth-child(3) {
+  color: gray;
+  font-size: small;
+}
+
+.post > :nth-child(4) {
+  display: flex;
+  gap: 0.5rem;
+}
+.post > :nth-child(4) > :nth-child(1) {
+  font-weight: bold;
+}
+
+.post > :nth-child(4) > :nth-child(2),
+.post > :nth-child(4) > :nth-child(3) {
+  color: rgb(69, 67, 67);
+}

@@ -1,0 +1,16 @@
+.following-card {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.following-card > :nth-child(1) {
+  font-weight: bold;
+}
+
+.following-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

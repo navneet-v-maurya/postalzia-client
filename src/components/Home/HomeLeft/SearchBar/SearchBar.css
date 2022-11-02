@@ -1,7 +1,7 @@
 .search-bar {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 0.8rem;
 }
 
@@ -13,9 +13,11 @@
 .search-bar > :nth-child(2) {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .search-bar > :nth-child(2) > :nth-child(1) {
+  width: 13rem;
   border: none;
   padding: 0.6rem;
   background-color: rgb(234, 215, 215);
@@ -24,10 +26,10 @@
 }
 
 .search-bar > :nth-child(2) > :nth-child(2) {
-  position: relative;
-  right: 2rem;
+  right: 0.2rem;
   background-color: rgb(80, 80, 188);
   border-radius: 0.3rem;
   padding: 0.4rem;
   cursor: pointer;
+  position: absolute;
 }

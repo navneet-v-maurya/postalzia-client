@@ -1,0 +1,73 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: rgb(135, 222, 225);
+  border-radius: 1rem;
+}
+
+.navbar-search {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-search > img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.navbar-search > input {
+  width: 100%;
+  border: none;
+  padding: 0.6rem;
+  background-color: rgb(234, 215, 215);
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.navbar-components {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 4.5rem;
+  padding-right: 1rem;
+}
+
+.navbar-components > p {
+  display: flex;
+  gap: 0.1rem;
+  align-items: center;
+  font-size: small;
+  cursor: pointer;
+}
+
+.navbar-components > p > :nth-child(1) {
+  font-size: x-large;
+}
+
+.navbar-components > :nth-child(1) {
+  color: rgb(238, 173, 53);
+}
+
+.navbar-components > :nth-child(2) {
+  color: blue;
+}
+
+.navbar-components > :nth-child(3) {
+  color: red;
+}
+
+.navbar-components > :nth-child(4) {
+  color: rgb(56, 146, 237);
+}
+
+.navbar-components > button {
+  border: none;
+  background-color: rgb(88, 88, 188);
+  padding: 0.7rem 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+}

@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar/SearchBar";
 
 function HomeLeft() {
   return (
-    <div>
+    <div className="home-left">
       <SearchBar />
       <ProfileCard />
       <FollowingCard />
