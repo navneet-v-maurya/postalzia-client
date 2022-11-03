@@ -1,0 +1,15 @@
+.right-navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.right-navbar > * {
+  font-size: x-large;
+  cursor: pointer;
+}
+
+.right-navbar > :nth-child(1) {
+  color: orange;
+}

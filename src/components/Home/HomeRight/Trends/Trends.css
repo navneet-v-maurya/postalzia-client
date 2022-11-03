@@ -1,0 +1,27 @@
+.trends {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  background-color: rgb(135, 222, 225);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tags > * {
+  cursor: pointer;
+}
+
+.tags > div > :nth-child(1) {
+  font-weight: bold;
+}
+
+.tags > div > :nth-child(2) {
+  font-size: small;
+  color: gray;
+}
