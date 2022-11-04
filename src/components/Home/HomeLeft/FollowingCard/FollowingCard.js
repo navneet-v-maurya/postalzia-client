@@ -12,6 +12,7 @@ function FollowingCard() {
         <Following />
         <Following />
       </div>
+      <p>Show more....</p>
     </div>
   );
 }

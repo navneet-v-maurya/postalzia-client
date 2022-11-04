@@ -3,15 +3,14 @@
   flex-direction: column;
   background-color: rgb(135, 222, 225);
   border-radius: 1rem;
-  align-items: center;
   position: relative;
   gap: 0.5rem;
   padding-bottom: 1.5rem;
 }
 
 .background-img > img {
-  width: 16rem;
-  height: 11rem;
+  width: 100%;
+  height: 14rem;
   object-fit: cover;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -23,16 +22,19 @@
   border-radius: 50%;
   object-fit: cover;
   position: absolute;
-  top: 7.5rem;
+  top: 10.5rem;
+  align-self: center;
 }
 
 .profile-card > :nth-child(3) {
   font-weight: bold;
   margin-top: 3rem;
+  align-self: center;
 }
 
 .profile-card > :nth-child(4) {
   color: grey;
+  align-self: center;
 }
 
 hr {
@@ -44,27 +46,33 @@ hr {
 
 .following-info {
   display: flex;
-  gap: 1.2rem;
+  justify-content: space-around;
 }
 
-.following-info > :nth-child(2) {
+.following-info > :nth-child(2),
+.following-info > :nth-child(4) {
   border-left: 1.5px solid gray;
 }
+
 .following-info > :nth-child(1),
-.following-info > :nth-child(3) {
+.following-info > :nth-child(3),
+.following-info > :nth-child(5) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0rem 12%;
   gap: 0.4rem;
 }
 
 .following-info > :nth-child(1) > :nth-child(1),
-.following-info > :nth-child(3) > :nth-child(1) {
+.following-info > :nth-child(3) > :nth-child(1),
+.following-info > :nth-child(5) > :nth-child(1) {
   font-weight: bold;
 }
 
 .following-info > :nth-child(1) > :nth-child(2),
-.following-info > :nth-child(3) > :nth-child(2) {
+.following-info > :nth-child(3) > :nth-child(2),
+.following-info > :nth-child(5) > :nth-child(2) {
   color: gray;
 }
 
@@ -73,4 +81,5 @@ hr {
   color: rgb(80, 80, 188);
   text-decoration: underline;
   cursor: pointer;
+  align-self: center;
 }

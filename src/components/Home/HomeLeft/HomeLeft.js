@@ -5,11 +5,15 @@ import InfoCard from "./InfoCard/InfoCard";
 import ProfileCard from "./ProfileCard/ProfileCard";
 import SearchBar from "./SearchBar/SearchBar";
 
-function HomeLeft({ profile }) {
+function HomeLeft({ profile, setProfile }) {
   return (
     <div className="home-left">
       <SearchBar />
-      {profile ? <InfoCard /> : <ProfileCard />}
+      {profile ? (
+        <InfoCard />
+      ) : (
+        <ProfileCard profile={profile} setProfile={setProfile} />
+      )}
       <FollowingCard />
     </div>
   );

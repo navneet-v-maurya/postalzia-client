@@ -14,3 +14,10 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+.following-card > :last-child {
+  font-weight: bold;
+  color: rgb(80, 80, 188);
+  cursor: pointer;
+  align-self: center;
+}

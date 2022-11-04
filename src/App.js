@@ -1,11 +1,11 @@
 import "./App.css";
+import Form from "./components/Auth/Form";
 //import Home from "./components/Home/Home";
-import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
     <div>
-      <Profile />
+      <Form />
     </div>
   );
 }

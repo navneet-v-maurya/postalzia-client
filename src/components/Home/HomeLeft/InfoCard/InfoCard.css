@@ -1,0 +1,48 @@
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: rgb(135, 222, 225);
+}
+
+.info-card > :nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-card > :nth-child(1) > :nth-child(2) {
+  font-size: x-large;
+  color: rgb(88, 88, 188);
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info > * {
+  display: flex;
+  font-weight: bold;
+  gap: 0.5rem;
+  font-size: small;
+}
+
+.info > * > p {
+  color: gray;
+  font-size: small;
+}
+
+.info-card > :last-child {
+  margin-top: 3rem;
+  border: none;
+  background-color: rgb(88, 88, 188);
+  padding: 0.7rem 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+}
