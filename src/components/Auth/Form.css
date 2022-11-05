@@ -2,7 +2,12 @@
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 5%;
+}
+.form > :nth-child(1) {
+  font-size: 25rem;
+  color: rgb(88, 88, 188);
+  align-self: center;
 }
 
 .form > :nth-child(2) {
@@ -28,6 +33,7 @@
 
 .form > :nth-child(2) > div > input,
 .form > :nth-child(2) > input {
+  width: 100%;
   border: none;
   padding: 0.8rem;
   background-color: rgb(234, 215, 215);

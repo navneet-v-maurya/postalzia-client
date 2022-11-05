@@ -1,0 +1,36 @@
+.info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.info-form > p {
+  align-self: center;
+  font-weight: bold;
+}
+
+.info-form > div > input,
+.info-form > input {
+  width: 100%;
+  border: none;
+  padding: 0.8rem;
+  background-color: rgb(234, 215, 215);
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.info-form > div {
+  display: flex;
+  gap: 1rem;
+}
+
+.info-form > input {
+  width: 96%;
+}
+.info-form > :last-child {
+  display: flex;
+  align-items: center;
+}
+
+.info-form > :last-child > input {
+  width: 70%;
+}
