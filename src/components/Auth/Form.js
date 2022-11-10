@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Form.css";
 import { GiHummingbird } from "react-icons/gi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUpAction, logInAction } from "../Redux/Actions/AuthAction";
 
 function Form() {
   const dispatch = useDispatch();
+  let loading = useSelector((state) => state.authReducer.loading);
 
   const [login, setLogin] = useState(false);
   const [passError, setPassError] = useState(false);
@@ -24,11 +25,12 @@ function Form() {
         setPassError(true);
       } else {
         dispatch(signUpAction(userData));
+        handleReset();
       }
     } else {
       dispatch(logInAction(userData));
+      handleReset();
     }
-    handleReset();
   };
 
   const handleReset = () => {
@@ -136,7 +138,9 @@ function Form() {
               ? "Dont have an account Sign up"
               : "Already have an account Sign up"}
           </p>
-          <button type="submit">{login ? "Login" : "Sign up"}</button>
+          <button type="submit">
+            {loading ? "Loading..." : login ? "Login" : "Sign up"}
+          </button>
         </div>
       </form>
     </div>
