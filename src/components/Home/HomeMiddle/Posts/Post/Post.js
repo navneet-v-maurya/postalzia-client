@@ -3,21 +3,19 @@ import "./Post.css";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { BiComment, BiShare } from "react-icons/bi";
 
-import photo from "../../../../../images/background.jpg";
-
-function Post() {
+function Post({ post }) {
   return (
     <div className="post">
-      <img src={photo} alt="post-img" />
+      <img src={post.image} alt="post-img" />
       <div>
         <FcLikePlaceholder />
         <BiComment />
         <BiShare />
       </div>
-      <p>2300 likes</p>
+      <p>{post.likes} likes</p>
       <div>
-        <p>Name</p>
-        <p>Details</p>
+        <p>name</p>
+        <p>{post.description}</p>
         <p>#tags</p>
       </div>
     </div>
