@@ -7,8 +7,7 @@ import {
   HiOutlineLocationMarker,
 } from "react-icons/hi";
 import { AiOutlineSchedule } from "react-icons/ai";
-
-import profileImg from "../../../../images/navneet.jpg";
+import { CgProfile } from "react-icons/cg";
 
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPost } from "../../../Redux/Actions/UploadAction";
@@ -49,7 +48,12 @@ function NavBar() {
   return (
     <div className="navbar">
       <div className="navbar-search">
-        <img src={profileImg} alt="profile-img" />
+        {user.profilePic ? (
+          <img src={user.profilePic} alt="profile" />
+        ) : (
+          <CgProfile className="default-profile-pic" />
+        )}
+
         <input
           value={desc}
           onChange={(e) => {

@@ -1,5 +1,5 @@
 import * as PostApi from "../../Api/PostApi";
-
+//get timeline posts
 export const getTimeLinePosts = (id) => async (dispatch) => {
   dispatch({ type: "RETREIVING_START" });
   try {

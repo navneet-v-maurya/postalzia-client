@@ -35,3 +35,9 @@ export const signUpAction = (userData) => async (dispatch) => {
     });
   }
 };
+
+export const logoutAction = () => async (dispatch) => {
+  dispatch({
+    type: "LOGOUT",
+  });
+};

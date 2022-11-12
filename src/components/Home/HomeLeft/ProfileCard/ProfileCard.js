@@ -1,37 +1,49 @@
 import React from "react";
 import "./ProfileCard.css";
 import background from "../../../../images/background.jpg";
-import Profile from "../../../../images/navneet.jpg";
+import { useSelector } from "react-redux";
+import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 function ProfileCard({ profile, setProfile }) {
-  const handleClick = () => {
-    setProfile(!profile);
-  };
+  const { user } = useSelector((state) => state.authReducer.authData);
+  const posts = useSelector((state) => state.postReducer.posts);
+  console.log(user);
 
   return (
     <div className="profile-card">
       <div className="background-img">
-        <img src={background} alt="background" />
+        <img
+          src={user.coverPic ? user.coverPic : background}
+          alt="background"
+        />
       </div>
-      <img src={Profile} alt="profile" />
-      <p>Name</p>
-      <p>Profession</p>
+      {user.profilePic ? (
+        <img src={user.profilePic} alt="profile" />
+      ) : (
+        <CgProfile className="default-profile-pic" />
+      )}
+
+      <p>
+        {user.firstName} {user.lastName}
+      </p>
+      <p>{user.worksAt ? user.worksAt : "Write about youself!"}</p>
       <hr />
       <div className="following-info">
         <div>
-          <p>845</p>
+          <p>{user.followers.length}</p>
           <p>Followers</p>
         </div>
         <div></div>
         <div>
-          <p>12587</p>
+          <p>{user.following.length}</p>
           <p>Following</p>
         </div>
         {profile ? (
           <>
             <div></div>
             <div>
-              <p>3</p>
+              <p>{posts.filter((post) => post.userId === user._id).length}</p>
               <p>Posts</p>
             </div>
           </>
@@ -40,7 +52,7 @@ function ProfileCard({ profile, setProfile }) {
         )}
       </div>
       <hr />
-      {profile ? "" : <p onClick={handleClick}>My Profile</p>}
+      {profile ? "" : <Link to={`/profile/${user._id}`}>My Profile</Link>}
     </div>
   );
 }

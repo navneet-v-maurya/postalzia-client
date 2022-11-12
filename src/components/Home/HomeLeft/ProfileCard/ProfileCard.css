@@ -83,3 +83,9 @@ hr {
   cursor: pointer;
   align-self: center;
 }
+
+.default-profile-pic {
+  font-weight: lighter;
+  color: gray;
+  background-color: white;
+}

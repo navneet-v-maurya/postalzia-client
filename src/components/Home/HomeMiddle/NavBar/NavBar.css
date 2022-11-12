@@ -12,7 +12,7 @@
   gap: 1rem;
 }
 
-.navbar-search > img {
+.navbar-search > :nth-child(1) {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;

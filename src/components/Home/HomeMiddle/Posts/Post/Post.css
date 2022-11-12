@@ -22,6 +22,7 @@
 .post > :nth-child(2) > * {
   font-size: x-large;
   color: black;
+  cursor: pointer;
 }
 
 .post > :nth-child(3) {

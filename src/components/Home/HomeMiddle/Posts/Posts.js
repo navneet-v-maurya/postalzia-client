@@ -17,7 +17,7 @@ function Posts() {
     <div className="posts">
       {loading
         ? "Fetching Posts...."
-        : posts.map((post) => <Post post={post} />)}
+        : posts.map((post) => <Post post={post} user={user} />)}
     </div>
   );
 }
