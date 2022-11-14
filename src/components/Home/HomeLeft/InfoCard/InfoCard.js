@@ -14,17 +14,19 @@ function InfoCard() {
   const params = useParams();
   const userParamsId = params.id;
   const { user } = useSelector((state) => state.authReducer.authData);
+
+  const fetchUser = async () => {
+    if (userParamsId === user._id) {
+      setMyProfileUser(user);
+    } else {
+      const otherUser = await getUser(userParamsId);
+      setMyProfileUser(otherUser);
+    }
+  };
+
   useEffect(() => {
-    const fetchUser = async () => {
-      if (userParamsId === user._id) {
-        setMyProfileUser(user);
-      } else {
-        const otherUser = await getUser(userParamsId);
-        setMyProfileUser(otherUser);
-      }
-    };
     fetchUser();
-  }, [myProfileUser]);
+  });
 
   const handleLogout = () => {
     dispatch(logoutAction());
@@ -37,7 +39,7 @@ function InfoCard() {
         {user._id === myProfileUser._id ? (
           <>
             <FiEdit2 onClick={() => setModal(true)} />
-            <ProfileModal modal={modal} setModal={setModal} />
+            <ProfileModal modal={modal} setModal={setModal} user={user} />
           </>
         ) : (
           ""
@@ -55,9 +57,13 @@ function InfoCard() {
         <div>
           Lives in{" "}
           <p>
-            {myProfileUser.livesIn
-              ? myProfileUser.livesIn
-              : "Add your location!!"}
+            {myProfileUser.livesIn ? (
+              <>
+                {myProfileUser.livesIn}, {myProfileUser.country}
+              </>
+            ) : (
+              "Add your location!!"
+            )}
           </p>
         </div>
         <div>

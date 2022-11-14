@@ -1,7 +1,7 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import InfoForm from "./InfoForm/InfoForm";
 
-function ProfileModal({ modal, setModal }) {
+function ProfileModal({ modal, setModal, user }) {
   const theme = useMantineTheme();
 
   return (
@@ -19,7 +19,7 @@ function ProfileModal({ modal, setModal }) {
         setModal(false);
       }}
     >
-      <InfoForm />
+      <InfoForm user={user} setModal={setModal} />
     </Modal>
   );
 }

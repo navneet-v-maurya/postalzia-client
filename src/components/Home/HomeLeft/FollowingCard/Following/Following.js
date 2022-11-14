@@ -1,15 +1,16 @@
 import React from "react";
 import "./Following.css";
-import profileImg from "../../../../../images/navneet.jpg";
 
-function Following() {
+function Following({ user }) {
   return (
     <div className="following">
       <div>
-        <img src={profileImg} alt="profile-img" />
+        <img src={user.profilePic} alt="profile-img" />
         <div>
-          <p>Name</p>
-          <p>@username</p>
+          <p>
+            {user.firstName} {user.lastName}
+          </p>
+          <p>{user.userName}</p>
         </div>
       </div>
       <button>Follow</button>

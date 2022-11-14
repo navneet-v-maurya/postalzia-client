@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function ProfileCard({ profile, setProfile }) {
   const { user } = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state) => state.postReducer.posts);
-  console.log(user);
 
   return (
     <div className="profile-card">

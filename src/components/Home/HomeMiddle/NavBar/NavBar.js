@@ -21,11 +21,23 @@ function NavBar() {
 
   const { user } = useSelector((state) => state.authReducer.authData);
 
-  const onImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      let img = e.target.files[0];
-      setImage(img);
-    }
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImage(base64);
   };
 
   const handleSubmit = (e) => {
@@ -33,9 +45,8 @@ function NavBar() {
     const newPost = {
       userId: user._id,
       description: desc,
-      image: URL.createObjectURL(image),
+      image: image,
     };
-
     dispatch(uploadPost(newPost));
     handleReset();
   };
@@ -86,13 +97,13 @@ function NavBar() {
           type="file"
           name="myImage"
           ref={imageRef}
-          onChange={onImageChange}
+          onChange={handleFileUpload}
         />
       </div>
       {image && (
         <div className="share-img-preview">
           <ImCross onClick={() => setImage(null)} />
-          <img src={URL.createObjectURL(image)} alt="selectedImage" />
+          <img src={image} alt="selectedImage" />
         </div>
       )}
     </div>
