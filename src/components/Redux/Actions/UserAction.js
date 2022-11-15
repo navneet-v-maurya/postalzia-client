@@ -10,3 +10,21 @@ export const UpdateUserAction = (id, userData) => async (dispatch) => {
     dispatch({ type: "UPDATE_FAIL" });
   }
 };
+
+export const followUserAction = (id, data) => async (dispatch) => {
+  dispatch({ type: "FOLLOW" });
+  try {
+    await UserApi.followUser(id, data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const unfollowUserAction = (id, data) => async (dispatch) => {
+  dispatch({ type: "UNFOLLOW" });
+  try {
+    await UserApi.unFollowUser(id, data);
+  } catch (error) {
+    console.log(error);
+  }
+};

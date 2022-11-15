@@ -9,6 +9,7 @@ function App() {
   return (
     <div>
       <Routes>
+        <Route path="/profile/:id" element={<Home profile={true} />} />
         <Route
           path="/"
           element={user ? <Navigate to="/home" /> : <Navigate to="/auth" />}
@@ -20,10 +21,6 @@ function App() {
         <Route
           path="/auth"
           element={user ? <Navigate to="../home" /> : <Form />}
-        />
-        <Route
-          path="/profile/:id"
-          element={user ? <Home profile={true} /> : <Form />}
         />
       </Routes>
     </div>

@@ -4,8 +4,9 @@ import { FiEdit2 } from "react-icons/fi";
 import ProfileModal from "../../../Modal/ProfileModal/ProfileModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../../Api/UserApi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { logoutAction } from "../../../Redux/Actions/AuthAction";
+import { Set_Default } from "../../../Redux/Actions/PostAction";
 
 function InfoCard() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function InfoCard() {
 
   const handleLogout = () => {
     dispatch(logoutAction());
+    dispatch(Set_Default());
   };
 
   return (
@@ -75,7 +77,9 @@ function InfoCard() {
           </p>
         </div>
       </div>
-      <button onClick={handleLogout}>Logout</button>
+      <Link onClick={handleLogout} to="../auth">
+        Logout
+      </Link>
     </div>
   );
 }

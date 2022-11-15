@@ -21,6 +21,33 @@ const authReducer = (
       return { ...state, authData: action.data, loading: false, error: false };
     case "UPDATE_FAIL":
       return { ...state, loading: false, error: true };
+
+    case "FOLLOW":
+      return {
+        ...state,
+        authData: {
+          ...state.authData,
+          user: {
+            ...state.authData.user,
+            following: [...state.authData.user.following, action.data],
+          },
+        },
+      };
+    case "UNFOLLOW":
+      return {
+        ...state,
+        authData: {
+          ...state.authData,
+          user: {
+            ...state.authData.user,
+            following: [
+              ...state.authData.user.following.filter(
+                (id) => id !== action.data
+              ),
+            ],
+          },
+        },
+      };
     case "LOGOUT":
       localStorage.clear();
       return { ...state, loading: false, error: false, authData: null };

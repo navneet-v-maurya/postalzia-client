@@ -45,4 +45,7 @@
   border-radius: 1rem;
   cursor: pointer;
   color: white;
+  font-size: medium;
+  text-decoration: none;
+  text-align: center;
 }

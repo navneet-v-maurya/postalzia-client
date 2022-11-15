@@ -19,6 +19,14 @@ const postReducer = (
       };
     case "UPLOAD_FAIL":
       return { ...state, error: true, uploading: true };
+    case "RETREIVING_START":
+      return { ...state, loading: true, error: false };
+    case "RETREIVING_SUCCESS":
+      return { ...state, loading: false, error: false, posts: action.data };
+    case "RETREIVING_FAIL":
+      return { ...state, error: true, loading: false };
+    case "SET_DEFAULT":
+      return { ...state, posts: [] };
     default:
       return state;
   }
