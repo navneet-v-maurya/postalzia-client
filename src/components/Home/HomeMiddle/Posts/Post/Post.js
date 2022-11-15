@@ -29,7 +29,7 @@ function Post({ post, user }) {
       </div>
       <p>{numberOfLikes} likes</p>
       <div>
-        <p>namee</p>
+        <p>{user.firstName}</p>
         <p>{post.description}</p>
         <p>#tags</p>
       </div>
