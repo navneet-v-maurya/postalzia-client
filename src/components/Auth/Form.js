@@ -3,6 +3,7 @@ import "./Form.css";
 import { GiHummingbird } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpAction, logInAction } from "../Redux/Actions/AuthAction";
+import Loading from "../Loading/Loading";
 
 function Form() {
   const dispatch = useDispatch();
@@ -48,7 +49,9 @@ function Form() {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  return (
+  return loading ? (
+    <Loading loadinType="Please wait!!" />
+  ) : (
     <div className="form">
       <GiHummingbird />
 
@@ -138,9 +141,7 @@ function Form() {
               ? "Dont have an account Sign up"
               : "Already have an account Sign up"}
           </p>
-          <button type="submit">
-            {loading ? "Loading..." : login ? "Login" : "Sign up"}
-          </button>
+          <button type="submit">{login ? "Login" : "Sign up"}</button>
         </div>
       </form>
     </div>

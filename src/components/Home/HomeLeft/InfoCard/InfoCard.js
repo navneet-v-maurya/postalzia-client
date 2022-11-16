@@ -20,8 +20,8 @@ function InfoCard() {
     if (userParamsId === user._id) {
       setMyProfileUser(user);
     } else {
-      const otherUser = await getUser(userParamsId);
-      setMyProfileUser(otherUser);
+      const { data } = await getUser(userParamsId);
+      setMyProfileUser(data);
     }
   };
 
@@ -77,9 +77,13 @@ function InfoCard() {
           </p>
         </div>
       </div>
-      <Link onClick={handleLogout} to="../auth">
-        Logout
-      </Link>
+      {userParamsId === user._id ? (
+        <Link onClick={handleLogout} to="../auth">
+          Logout
+        </Link>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

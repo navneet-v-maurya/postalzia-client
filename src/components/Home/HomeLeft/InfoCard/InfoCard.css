@@ -5,6 +5,7 @@
   border-radius: 1rem;
   padding: 1rem;
   background-color: rgb(135, 222, 225);
+  padding-bottom: 2rem;
 }
 
 .info-card > :nth-child(1) {
@@ -37,7 +38,7 @@
   font-size: small;
 }
 
-.info-card > :last-child {
+.info-card > :button {
   margin-top: 3rem;
   border: none;
   background-color: rgb(88, 88, 188);

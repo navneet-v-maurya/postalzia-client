@@ -6,8 +6,12 @@ import {
 } from "../../../../Redux/Actions/UserAction";
 import "./Following.css";
 
+import { CgProfile } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
+
 function Following({ user }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { user: currentUser } = useSelector(
     (state) => state.authReducer.authData
@@ -26,10 +30,19 @@ function Following({ user }) {
     setFollowing((prev) => !prev);
   };
 
+  const handleOpenProfile = () => {
+    navigate(`/profile/${user._id}`);
+  };
+
   return (
     <div className="following">
-      <div>
-        <img src={user.profilePic} alt="profile-img" />
+      <div onClick={handleOpenProfile}>
+        {user.profilePic ? (
+          <img src={user.profilePic} alt="profile-img" />
+        ) : (
+          <CgProfile className="default" />
+        )}
+
         <div>
           <p>
             {user.firstName} {user.lastName}
@@ -37,7 +50,10 @@ function Following({ user }) {
           <p>{user.userName}</p>
         </div>
       </div>
-      <button onClick={handleFollow}>
+      <button
+        onClick={handleFollow}
+        className={following ? "unfollow" : "follow"}
+      >
         {following ? "Unfollow" : "Follow"}
       </button>
     </div>

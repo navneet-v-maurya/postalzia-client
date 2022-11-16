@@ -4,6 +4,7 @@ import "./Posts.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTimeLinePosts } from "../../../Redux/Actions/PostAction";
 import { useParams } from "react-router-dom";
+import Loading from "../../../Loading/Loading";
 
 function Posts() {
   const dispatch = useDispatch();
@@ -22,9 +23,11 @@ function Posts() {
 
   return (
     <div className="posts">
-      {loading
-        ? "Fetching Posts...."
-        : posts.map((post) => <Post post={post} user={user} key={post._id} />)}
+      {loading ? (
+        <Loading loadinType="Fetching Posts..." />
+      ) : (
+        posts.map((post) => <Post post={post} user={user} key={post._id} />)
+      )}
     </div>
   );
 }

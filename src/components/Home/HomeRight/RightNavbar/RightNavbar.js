@@ -1,7 +1,7 @@
 import React from "react";
 import "./RightNavbar.css";
 import {
-  RiHashtag,
+  RiHome3Line,
   RiSettings3Line,
   RiNotification3Line,
   RiChat3Line,
@@ -12,7 +12,7 @@ function RightNavbar() {
   return (
     <div className="right-navbar">
       <Link to="../home">
-        <RiHashtag />
+        <RiHome3Line />
       </Link>
       <RiSettings3Line />
       <RiNotification3Line />
