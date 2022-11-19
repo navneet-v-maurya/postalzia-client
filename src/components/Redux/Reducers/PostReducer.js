@@ -18,13 +18,18 @@ const postReducer = (
         uploading: false,
       };
     case "UPLOAD_FAIL":
-      return { ...state, error: true, uploading: true };
+      return { ...state, error: true, uploading: false };
     case "RETREIVING_START":
       return { ...state, loading: true, error: false };
     case "RETREIVING_SUCCESS":
       return { ...state, loading: false, error: false, posts: action.data };
     case "RETREIVING_FAIL":
       return { ...state, error: true, loading: false };
+    case "DELETE_POST":
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== action.postId),
+      };
     case "SET_DEFAULT":
       return { ...state, posts: [] };
     default:

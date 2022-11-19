@@ -25,6 +25,8 @@ function Posts() {
     <div className="posts">
       {loading ? (
         <Loading loadinType="Fetching Posts..." />
+      ) : posts.length === 0 ? (
+        "Not posted any posts yet!!!"
       ) : (
         posts.map((post) => <Post post={post} user={user} key={post._id} />)
       )}

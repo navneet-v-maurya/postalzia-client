@@ -19,7 +19,7 @@ function ShareModal({ modalOpened, setModalOpened }) {
         setModalOpened(false);
       }}
     >
-      <NavBar />
+      <NavBar setModalOpened={setModalOpened} modalOpened={modalOpened} />
     </Modal>
   );
 }

@@ -34,3 +34,22 @@
 .info-form > :last-child > input {
   width: 70%;
 }
+
+.info-form > button {
+  align-self: flex-end;
+  width: 20%;
+  border: none;
+  background-color: rgb(88, 88, 188);
+  padding: 0.9rem 1rem;
+  padding-left: 3rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+  box-shadow: rgb(76, 74, 80) 0px 5px 10px, rgb(71, 66, 80) 0px 3px 3px;
+  transition-property: background-color color;
+  transition-duration: 0.5s;
+}
+.info-form > button:hover {
+  background-color: rgb(109, 200, 231);
+  color: black;
+}

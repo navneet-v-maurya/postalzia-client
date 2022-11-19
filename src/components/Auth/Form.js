@@ -141,7 +141,9 @@ function Form() {
               ? "Dont have an account Sign up"
               : "Already have an account Sign up"}
           </p>
-          <button type="submit">{login ? "Login" : "Sign up"}</button>
+          <button disabled={loading} type="submit">
+            {login ? "Login" : "Sign up"}
+          </button>
         </div>
       </form>
     </div>

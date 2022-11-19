@@ -2,4 +2,5 @@
   display: grid;
   grid-template-columns: 16rem auto 18rem;
   gap: 1.5rem;
+  margin-top: 0.3rem;
 }

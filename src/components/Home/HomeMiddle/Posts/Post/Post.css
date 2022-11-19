@@ -1,15 +1,19 @@
 .post {
   display: flex;
   flex-direction: column;
-  background-color: rgb(135, 222, 225);
+  background-color: white;
   border-radius: 1rem;
   padding: 1rem;
   gap: 1rem;
 }
 
-.post > img {
+.post > :nth-child(1) {
+  position: relative;
+}
+
+.post > :nth-child(1) > img {
   width: 100%;
-  height: 20rem;
+  height: auto;
   border-radius: 1rem;
   object-fit: cover;
 }

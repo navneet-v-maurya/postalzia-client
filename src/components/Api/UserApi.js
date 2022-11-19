@@ -1,14 +1,24 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000/user";
+const URL = "https://postalzia.herokuapp.com/user";
+const API = axios.create({ baseURL: "https://postalzia.herokuapp.com/user" });
 
-export const getUser = (id) => axios.get(`${URL}/${id}`);
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("profile")) {
+    req.headers.authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("profile")).token
+    }`;
+  }
+  return req;
+});
 
-export const updateUserApi = (id, data) => axios.put(`${URL}/${id}`, data);
+export const getUser = (id) => API.get(`${URL}/${id}`);
 
-export const getAllUsers = () => axios.get(`${URL}`);
+export const updateUserApi = (id, data) => API.put(`${URL}/${id}`, data);
 
-export const followUser = (id, data) => axios.put(`${URL}/${id}/follow`, data);
+export const getAllUsers = () => API.get(`${URL}`);
+
+export const followUser = (id, data) => API.put(`${URL}/${id}/follow`, data);
 
 export const unFollowUser = (id, data) =>
-  axios.put(`${URL}/${id}/unfollow`, data);
+  API.put(`${URL}/${id}/unfollow`, data);

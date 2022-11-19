@@ -37,7 +37,11 @@ function InfoCard() {
   return (
     <div className="info-card">
       <div>
-        <p>Profile Info</p>
+        <p>
+          {user._id === myProfileUser._id
+            ? "Your Info"
+            : `${myProfileUser.firstName}'s Info`}
+        </p>
         {user._id === myProfileUser._id ? (
           <>
             <FiEdit2 onClick={() => setModal(true)} />
@@ -78,7 +82,7 @@ function InfoCard() {
         </div>
       </div>
       {userParamsId === user._id ? (
-        <Link onClick={handleLogout} to="../auth">
+        <Link className="logout-button" onClick={handleLogout} to="../auth">
           Logout
         </Link>
       ) : (

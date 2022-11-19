@@ -21,7 +21,7 @@ function FollowingCard() {
       <div>
         {Users.map((u) => {
           if (user._id !== u._id) {
-            return <Following user={u} />;
+            return <Following user={u} key={u._id} />;
           }
         })}
       </div>

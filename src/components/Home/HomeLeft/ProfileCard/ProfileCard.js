@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileCard.css";
-import background from "../../../../images/background.jpg";
+import defaultCover from "../../../../images/default-cover.png";
 import { useSelector } from "react-redux";
 import { CgProfile } from "react-icons/cg";
 import { Link, useParams } from "react-router-dom";
@@ -36,10 +36,10 @@ function ProfileCard({ profile, setProfile }) {
             myProfileUser._id
               ? myProfileUser.coverPic
                 ? myProfileUser.coverPic
-                : background
+                : defaultCover
               : user.coverPic
               ? user.coverPic
-              : background
+              : defaultCover
           }
           alt="background"
         />

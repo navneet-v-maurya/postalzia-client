@@ -1,7 +1,7 @@
 .profile-card {
   display: flex;
   flex-direction: column;
-  background-color: rgb(135, 222, 225);
+  background-color: white;
   border-radius: 1rem;
   position: relative;
   gap: 0.5rem;

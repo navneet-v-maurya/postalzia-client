@@ -4,7 +4,7 @@
   gap: 1.5rem;
   border-radius: 1rem;
   padding: 1rem;
-  background-color: rgb(135, 222, 225);
+  background-color: white;
   padding-bottom: 2rem;
 }
 
@@ -38,7 +38,7 @@
   font-size: small;
 }
 
-.info-card > :button {
+.logout-button {
   margin-top: 3rem;
   border: none;
   background-color: rgb(88, 88, 188);
@@ -49,4 +49,12 @@
   font-size: medium;
   text-decoration: none;
   text-align: center;
+  box-shadow: rgb(76, 74, 80) 0px 5px 10px, rgb(71, 66, 80) 0px 3px 3px;
+  transition-property: background-color color;
+  transition-duration: 0.5s;
+}
+
+.logout-button:hover {
+  background-color: rgb(109, 200, 231);
+  color: black;
 }

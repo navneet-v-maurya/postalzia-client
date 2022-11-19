@@ -12,9 +12,10 @@ import { CgProfile } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPost } from "../../../Redux/Actions/UploadAction";
 
-function NavBar() {
+function NavBar({ setModalOpened, modalOpened }) {
   const [image, setImage] = useState(null);
   const [desc, setDesc] = useState("");
+  const [error, setError] = useState(false);
   const imageRef = useRef();
   const dispatch = useDispatch();
   const uploading = useSelector((state) => state.postReducer.uploading);
@@ -38,17 +39,26 @@ function NavBar() {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setImage(base64);
+    setError(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newPost = {
-      userId: user._id,
-      description: desc,
-      image: image,
-    };
-    dispatch(uploadPost(newPost));
-    handleReset();
+    if (image === null && desc === "") {
+      setError(true);
+    } else {
+      const newPost = {
+        userId: user._id,
+        description: desc,
+        image: image,
+        userName: user.firstName + " " + user.lastName,
+      };
+      if (modalOpened) {
+        setModalOpened(false);
+      }
+      dispatch(uploadPost(newPost));
+      handleReset();
+    }
   };
 
   const handleReset = () => {
@@ -68,6 +78,7 @@ function NavBar() {
         <input
           value={desc}
           onChange={(e) => {
+            setError(false);
             setDesc(e.target.value);
           }}
           type="search"
@@ -105,6 +116,11 @@ function NavBar() {
           <ImCross onClick={() => setImage(null)} />
           <img src={image} alt="selectedImage" />
         </div>
+      )}
+      {error ? (
+        <div className="error">Either add Photo or Description!!!!</div>
+      ) : (
+        ""
       )}
     </div>
   );

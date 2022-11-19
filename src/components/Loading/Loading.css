@@ -3,9 +3,7 @@
   --radius: 5.5;
   --size: 4;
 }
-body {
-  background: hsl(var(--hue), 20%, 70%);
-}
+
 .loading {
   display: flex;
   flex-direction: column-reverse;

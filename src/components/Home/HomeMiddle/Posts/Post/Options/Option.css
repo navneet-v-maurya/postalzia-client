@@ -1,21 +1,19 @@
-.home-right {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.home-right > :nth-child(3) {
+.options {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
   border: none;
-  background-color: rgb(88, 88, 188);
-  padding: 0.9rem 1.5rem;
-  border-radius: 1rem;
   cursor: pointer;
+  background-color: rgb(88, 88, 188);
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.3rem;
   color: white;
   box-shadow: rgb(76, 74, 80) 0px 5px 10px, rgb(71, 66, 80) 0px 3px 3px;
   transition-property: background-color color;
   transition-duration: 0.5s;
 }
-.home-right > :nth-child(3):hover {
+
+.navbar-components > button:hover {
   background-color: rgb(109, 200, 231);
   color: black;
 }
