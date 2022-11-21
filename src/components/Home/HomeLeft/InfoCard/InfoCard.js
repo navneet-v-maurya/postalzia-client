@@ -7,6 +7,7 @@ import { getUser } from "../../../Api/UserApi";
 import { Link, useParams } from "react-router-dom";
 import { logoutAction } from "../../../Redux/Actions/AuthAction";
 import { Set_Default } from "../../../Redux/Actions/PostAction";
+import Loading from "../../../Loading/Loading";
 
 function InfoCard() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function InfoCard() {
 
   useEffect(() => {
     fetchUser();
-  });
+  }, [userParamsId, user]);
 
   const handleLogout = () => {
     dispatch(logoutAction());

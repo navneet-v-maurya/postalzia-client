@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./InfoForm.css";
-import FileBase from "react-file-base64";
+import imageCompression from "browser-image-compression";
 import { useDispatch } from "react-redux";
 import { UpdateUserAction } from "../../../Redux/Actions/UserAction";
 
@@ -17,6 +17,41 @@ function InfoForm({ user, setModal }) {
     e.preventDefault();
     dispatch(UpdateUserAction(user._id, infoFormData));
     setModal(false);
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleImageChange = async (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const imageFile = e.target.files[0];
+      const options = {
+        maxSizeMB: 0.5,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true,
+      };
+      try {
+        const compressedFile = await imageCompression(imageFile, options);
+        const base64 = await convertToBase64(compressedFile);
+        if (e.target.name === "profilePic") {
+          setInfoFormData({ ...infoFormData, profilePic: base64 });
+        } else {
+          setInfoFormData({ ...infoFormData, coverPic: base64 });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -70,25 +105,9 @@ function InfoForm({ user, setModal }) {
       />
       <div>
         <p>Profile Image</p>
-        <FileBase
-          required
-          value={infoFormData.profilePic}
-          type="file"
-          multiple={false}
-          onDone={({ base64 }) =>
-            setInfoFormData({ ...infoFormData, profilePic: base64 })
-          }
-        />
+        <input type="file" name="profilePic" onChange={handleImageChange} />
         <p>Cover Image</p>
-        <FileBase
-          required
-          value={infoFormData.coverPic}
-          type="file"
-          multiple={false}
-          onDone={({ base64 }) =>
-            setInfoFormData({ ...infoFormData, coverPic: base64 })
-          }
-        />
+        <input type="file" name="coverPic" onChange={handleImageChange} />
       </div>
       <button onClick={handleClick}>Update</button>
     </form>

@@ -76,7 +76,7 @@ hr {
   color: gray;
 }
 
-.profile-card > :last-child {
+.myProfile {
   font-weight: bold;
   color: rgb(80, 80, 188);
   text-decoration: underline;
@@ -88,4 +88,8 @@ hr {
   font-weight: lighter;
   color: gray;
   background-color: white;
+}
+
+.myProfile-follow {
+  align-self: center;
 }

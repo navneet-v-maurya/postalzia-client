@@ -4,6 +4,7 @@ export const UpdateUserAction = (id, userData) => async (dispatch) => {
   dispatch({ type: "UPDATE_START" });
   try {
     const { data } = await UserApi.updateUserApi(id, userData);
+    console.log(data);
     dispatch({ type: "UPDATE_SUCCESS", data: data });
   } catch (error) {
     console.log(error);
@@ -12,7 +13,7 @@ export const UpdateUserAction = (id, userData) => async (dispatch) => {
 };
 
 export const followUserAction = (id, data) => async (dispatch) => {
-  dispatch({ type: "FOLLOW" });
+  dispatch({ type: "FOLLOW", data: data._id });
   try {
     await UserApi.followUser(id, data);
   } catch (error) {
@@ -21,7 +22,7 @@ export const followUserAction = (id, data) => async (dispatch) => {
 };
 
 export const unfollowUserAction = (id, data) => async (dispatch) => {
-  dispatch({ type: "UNFOLLOW" });
+  dispatch({ type: "UNFOLLOW", data: data._id });
   try {
     await UserApi.unFollowUser(id, data);
   } catch (error) {

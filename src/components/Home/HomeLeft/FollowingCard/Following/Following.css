@@ -15,12 +15,19 @@
 
 .following > :nth-child(1) > img {
   width: 3rem;
+  height: 3rem;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .default {
   font-size: 3rem;
   color: gray;
+}
+.following > :nth-child(1) > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .following > :nth-child(1) > div > :nth-child(1) {

@@ -1,16 +1,7 @@
 import axios from "axios";
 
-const URL = "https://postalzia.herokuapp.com/user";
-const API = axios.create({ baseURL: "https://postalzia.herokuapp.com/user" });
-
-API.interceptors.request.use((req) => {
-  if (localStorage.getItem("profile")) {
-    req.headers.authorization = `Bearer ${
-      JSON.parse(localStorage.getItem("profile")).token
-    }`;
-  }
-  return req;
-});
+const URL = "http://localhost:5000/user";
+const API = axios.create({ baseURL: "http://localhost:5000/user" });
 
 export const getUser = (id) => API.get(`${URL}/${id}`);
 

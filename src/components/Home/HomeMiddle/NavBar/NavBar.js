@@ -12,6 +12,8 @@ import { CgProfile } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPost } from "../../../Redux/Actions/UploadAction";
 
+import imageCompression from "browser-image-compression";
+
 function NavBar({ setModalOpened, modalOpened }) {
   const [image, setImage] = useState(null);
   const [desc, setDesc] = useState("");
@@ -37,9 +39,19 @@ function NavBar({ setModalOpened, modalOpened }) {
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    setImage(base64);
-    setError(false);
+    const options = {
+      maxSizeMB: 0.5,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    };
+    try {
+      const compressedFile = await imageCompression(file, options);
+      const base64 = await convertToBase64(compressedFile);
+      setImage(base64);
+      setError(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmit = (e) => {

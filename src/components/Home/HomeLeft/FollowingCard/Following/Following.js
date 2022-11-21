@@ -9,45 +9,41 @@ import "./Following.css";
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
-function Following({ user }) {
+function Following({ u }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user: currentUser } = useSelector(
-    (state) => state.authReducer.authData
-  );
+  const { user } = useSelector((state) => state.authReducer.authData);
 
-  const [following, setFollowing] = useState(
-    currentUser.following.includes(user._id)
-  );
+  const [following, setFollowing] = useState(user.following.includes(u._id));
 
   const handleFollow = () => {
     if (!following) {
-      dispatch(followUserAction(currentUser._id, user));
+      dispatch(followUserAction(user._id, u));
     } else {
-      dispatch(unfollowUserAction(currentUser._id, user));
+      dispatch(unfollowUserAction(user._id, u));
     }
     setFollowing((prev) => !prev);
   };
 
   const handleOpenProfile = () => {
-    navigate(`/profile/${user._id}`);
+    navigate(`/profile/${u._id}`);
   };
 
   return (
     <div className="following">
       <div onClick={handleOpenProfile}>
-        {user.profilePic ? (
-          <img src={user.profilePic} alt="profile-img" />
+        {u.profilePic ? (
+          <img src={u.profilePic} alt="profile-img" />
         ) : (
           <CgProfile className="default" />
         )}
 
         <div>
           <p>
-            {user.firstName} {user.lastName}
+            {u.firstName} {u.lastName}
           </p>
-          <p>{user.userName}</p>
+          <p>{u.userName}</p>
         </div>
       </div>
       <button

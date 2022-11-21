@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileCard.css";
 import defaultCover from "../../../../images/default-cover.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CgProfile } from "react-icons/cg";
 import { Link, useParams } from "react-router-dom";
 import { getUser } from "../../../Api/UserApi";
 
-function ProfileCard({ profile, setProfile }) {
+function ProfileCard({ profile }) {
   const { user } = useSelector((state) => state.authReducer.authData);
+
   const [myProfileUser, setMyProfileUser] = useState({});
   const posts = useSelector((state) => state.postReducer.posts);
+
+  const dispatch = useDispatch();
 
   const params = useParams();
 
   const paramsId = params.id;
 
+  const [following, setFollowing] = useState(user.following.includes(paramsId));
+
   const fetchUser = async () => {
-    if (paramsId) {
-      if (paramsId !== user._id) {
-        const { data } = await getUser(paramsId);
+    if (paramsId === undefined) {
+      setMyProfileUser(user);
+    } else {
+      if (paramsId === user._id) {
+        setMyProfileUser(user);
+      } else {
+        const { data } = await getUser([paramsId]);
         setMyProfileUser(data);
       }
     }
@@ -26,68 +35,34 @@ function ProfileCard({ profile, setProfile }) {
 
   useEffect(() => {
     fetchUser();
-  }, [params]);
+  }, [paramsId, user]);
 
   return (
     <div className="profile-card">
       <div className="background-img">
         <img
-          src={
-            myProfileUser._id
-              ? myProfileUser.coverPic
-                ? myProfileUser.coverPic
-                : defaultCover
-              : user.coverPic
-              ? user.coverPic
-              : defaultCover
-          }
+          src={myProfileUser.coverPic ? myProfileUser.coverPic : defaultCover}
           alt="background"
         />
       </div>
-      {!myProfileUser._id ? (
-        user.profilePic ? (
-          <img src={user.profilePic} alt="profile" />
-        ) : (
-          <CgProfile className="default-profile-pic" />
-        )
-      ) : myProfileUser.profilePic ? (
+      {myProfileUser.profilePic ? (
         <img src={myProfileUser.profilePic} alt="profile" />
       ) : (
         <CgProfile className="default-profile-pic" />
       )}
-
       <p>
-        {myProfileUser._id ? myProfileUser.firstName : user.firstName}{" "}
-        {myProfileUser._id ? myProfileUser.lastName : user.lastName}
+        {myProfileUser.firstName} {myProfileUser.lastName}
       </p>
-      <p>
-        {myProfileUser._id
-          ? myProfileUser.worksAt
-            ? myProfileUser.worksAt
-            : myProfileUser === user._id
-            ? "write about yourSelf"
-            : ""
-          : user.worksAt
-          ? user.worksAt
-          : "Write about yourself!!"}
-      </p>
+      <p>{myProfileUser.worksAt ? myProfileUser.worksAt : ""}</p>
       <hr />
       <div className="following-info">
         <div>
-          <p>
-            {myProfileUser._id
-              ? myProfileUser.followers.length
-              : user.followers.length}
-          </p>
+          <p>{myProfileUser._id ? myProfileUser.followers.length : ""}</p>
           <p>Followers</p>
         </div>
         <div></div>
         <div>
-          <p>
-            {myProfileUser._id
-              ? myProfileUser.following.length
-              : user.following.length}
-          </p>
+          <p>{myProfileUser._id ? myProfileUser.following.length : ""}</p>
           <p>Following</p>
         </div>
         {profile ? (
@@ -97,14 +72,8 @@ function ProfileCard({ profile, setProfile }) {
               <p>
                 {
                   posts.filter((post) => {
-                    if (myProfileUser._id) {
-                      if (post.userId === myProfileUser._id) {
-                        return post;
-                      }
-                    } else {
-                      if (post.userId === user._id) {
-                        return post;
-                      }
+                    if (post.userId === myProfileUser._id) {
+                      return post;
                     }
                   }).length
                 }
@@ -117,7 +86,14 @@ function ProfileCard({ profile, setProfile }) {
         )}
       </div>
       <hr />
-      {profile ? "" : <Link to={`/profile/${user._id}`}>My Profile</Link>}
+
+      {profile ? (
+        ""
+      ) : (
+        <Link className="myProfile" to={`/profile/${user._id}`}>
+          My Profile
+        </Link>
+      )}
     </div>
   );
 }
