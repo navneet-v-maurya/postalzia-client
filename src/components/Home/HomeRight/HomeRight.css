@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  overflow: hidden;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .home-right > :nth-child(3) {
@@ -14,6 +17,7 @@
   box-shadow: rgb(76, 74, 80) 0px 5px 10px, rgb(71, 66, 80) 0px 3px 3px;
   transition-property: background-color color;
   transition-duration: 0.5s;
+  margin-bottom: 5rem;
 }
 .home-right > :nth-child(3):hover {
   background-color: rgb(109, 200, 231);

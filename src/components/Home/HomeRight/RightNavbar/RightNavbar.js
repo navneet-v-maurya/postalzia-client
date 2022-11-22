@@ -6,9 +6,10 @@ import {
   RiNotification3Line,
   RiChat3Line,
 } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function RightNavbar() {
+  const Navigate = useNavigate();
   return (
     <div className="right-navbar">
       <Link to="../home">
@@ -16,7 +17,11 @@ function RightNavbar() {
       </Link>
       <RiSettings3Line />
       <RiNotification3Line />
-      <RiChat3Line />
+      <RiChat3Line
+        onClick={() => {
+          Navigate("/chat");
+        }}
+      />
     </div>
   );
 }

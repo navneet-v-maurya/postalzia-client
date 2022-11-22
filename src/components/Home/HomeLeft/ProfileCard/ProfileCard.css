@@ -6,6 +6,9 @@
   position: relative;
   gap: 0.5rem;
   padding-bottom: 1.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.3) 0px 00px 00px 0px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .background-img > img {

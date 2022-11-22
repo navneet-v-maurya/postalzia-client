@@ -1,0 +1,10 @@
+.chat-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-right > :nth-child(1) {
+  width: 24.4%;
+  align-self: flex-end;
+}

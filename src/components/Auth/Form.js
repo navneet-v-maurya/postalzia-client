@@ -8,7 +8,6 @@ import Loading from "../Loading/Loading";
 function Form() {
   const dispatch = useDispatch();
   let loading = useSelector((state) => state.authReducer.loading);
-
   const [login, setLogin] = useState(false);
   const [passError, setPassError] = useState(false);
   const [userData, setUserData] = useState({
@@ -50,7 +49,7 @@ function Form() {
   };
 
   return loading ? (
-    <Loading loadinType="Please wait!!" />
+    <Loading loadinType="Please wait!!" auth={true} />
   ) : (
     <div className="form">
       <GiHummingbird />

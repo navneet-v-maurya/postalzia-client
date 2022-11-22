@@ -1,0 +1,28 @@
+.user-chat {
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  align-items: center;
+}
+
+.user-chat > img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-chat > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-chat > div > :nth-child(1) {
+  font-size: small;
+  font-weight: bold;
+}
+
+.user-chat > div > :nth-child(2) {
+  font-size: smaller;
+  color: rgb(69, 17, 160);
+}

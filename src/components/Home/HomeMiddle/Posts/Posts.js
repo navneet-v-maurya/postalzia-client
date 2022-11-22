@@ -24,7 +24,7 @@ function Posts() {
   return (
     <div className="posts">
       {loading ? (
-        <Loading loadinType="Fetching Posts..." />
+        <Loading loadinType="Fetching Posts..." auth={false} />
       ) : posts.length === 0 ? (
         "Not posted any posts yet!!!"
       ) : (
