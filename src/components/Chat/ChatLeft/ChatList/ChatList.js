@@ -2,24 +2,14 @@ import React from "react";
 import "./ChatList.css";
 import UserChat from "./UserChat/UserChat";
 
-function ChatList() {
+function ChatList({ chats }) {
   return (
     <div className="chat-list">
       <p>Chats</p>
       <div>
-        <div>
-          <UserChat />
-          <hr />
-        </div>
-        <div>
-          <UserChat />
-          <hr />
-        </div>
-
-        <div>
-          <UserChat />
-          <hr />
-        </div>
+        {chats.map((chat) => {
+          return <UserChat key={chat._id} chat={chat} />;
+        })}
       </div>
     </div>
   );

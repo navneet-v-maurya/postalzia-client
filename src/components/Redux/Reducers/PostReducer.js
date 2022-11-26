@@ -31,6 +31,7 @@ const postReducer = (
         posts: state.posts.filter((post) => post._id !== action.postId),
       };
     case "SET_DEFAULT":
+      localStorage.clear();
       return { ...state, posts: [] };
     default:
       return state;

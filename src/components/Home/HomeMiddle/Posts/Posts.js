@@ -16,7 +16,6 @@ function Posts() {
     dispatch(getTimeLinePosts(user._id));
   }, [params.id]);
 
-  if (!posts) return "no posts";
   if (params.id) {
     posts = posts.filter((post) => post.userId === params.id);
   }

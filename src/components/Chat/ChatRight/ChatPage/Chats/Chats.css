@@ -1,0 +1,48 @@
+.chats {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 0rem;
+  gap: 1rem;
+}
+
+.myChat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 70%;
+  background-color: green;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding: 0.7rem;
+  color: white;
+}
+
+.myChat > p,
+.userChat > p {
+  font-size: smaller;
+}
+
+.myChat > p {
+  align-self: flex-end;
+}
+
+.userChat > p {
+  align-self: flex-start;
+}
+
+.userChat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 70%;
+  background-color: gray;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding: 0.7rem;
+  color: white;
+}

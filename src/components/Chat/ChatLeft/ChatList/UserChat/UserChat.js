@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./UserChat.css";
-import profilePic from "../../../../../images/navneet.jpg";
-function UserChat() {
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../../../Api/UserApi";
+import { CgProfile } from "react-icons/cg";
+import { setActiveChatAction } from "../../../../Redux/Actions/ChatAction";
+
+function UserChat({ chat }) {
+  const [chatUser, setChatUser] = useState({});
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.authReducer.authData);
+
+  const getChatUser = async () => {
+    if (chat !== undefined) {
+      let cUser = chat.members.filter((userId) => userId !== user._id);
+      const { data } = await getUser(cUser);
+      setChatUser(data);
+    }
+  };
+
+  useEffect(() => {
+    getChatUser();
+  }, []);
+
+  const setActiveChat = () => {
+    dispatch(setActiveChatAction(chat));
+  };
+
   return (
-    <div className="user-chat">
-      <img src={profilePic} />
+    <div onClick={setActiveChat} className="user-chat">
+      {chatUser.profilePic ? <img src={chatUser.profilePic} /> : <CgProfile />}
+
       <div>
-        <p>Navneet Maurya</p>
+        <p>
+          {chatUser.firstName} {chatUser.lastName}
+        </p>
         <p>Online</p>
       </div>
     </div>

@@ -1,0 +1,37 @@
+.write-chat {
+  display: flex;
+  padding-bottom: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.write-chat > :nth-child(1) {
+  background-color: rgb(192, 179, 179);
+  color: white;
+  font-size: x-large;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.write-chat > :nth-child(2) {
+  width: 80%;
+}
+
+.write-chat > button {
+  border: none;
+  background-color: rgb(88, 88, 188);
+  padding: 0.7rem 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+  font-size: small;
+  box-shadow: rgb(76, 74, 80) 0px 5px 10px, rgb(71, 66, 80) 0px 3px 3px;
+  transition-property: background-color color;
+  transition-duration: 0.5s;
+}
+
+.write-chat > button:hover {
+  background-color: rgb(109, 200, 231);
+  color: black;
+}

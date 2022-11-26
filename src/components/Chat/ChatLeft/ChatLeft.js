@@ -3,11 +3,11 @@ import "./ChatLeft.css";
 import SearchBar from "../../Home/HomeLeft/SearchBar/SearchBar";
 import ChatList from "./ChatList/ChatList";
 
-function ChatLeft() {
+function ChatLeft({ chats }) {
   return (
     <div className="chat-left">
       <SearchBar />
-      <ChatList />
+      <ChatList chats={chats} />
     </div>
   );
 }

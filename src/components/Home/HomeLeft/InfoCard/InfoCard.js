@@ -7,7 +7,7 @@ import { getUser } from "../../../Api/UserApi";
 import { Link, useParams } from "react-router-dom";
 import { logoutAction } from "../../../Redux/Actions/AuthAction";
 import { Set_Default } from "../../../Redux/Actions/PostAction";
-import Loading from "../../../Loading/Loading";
+import { removeActiveChatAction } from "../../../Redux/Actions/ChatAction";
 
 function InfoCard() {
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ function InfoCard() {
   const handleLogout = () => {
     dispatch(logoutAction());
     dispatch(Set_Default());
+    dispatch(removeActiveChatAction());
   };
 
   return (
