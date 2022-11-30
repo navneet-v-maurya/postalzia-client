@@ -20,7 +20,8 @@ function UserChat({ chat }) {
 
   useEffect(() => {
     getChatUser();
-  }, []);
+    // eslint-disable-next-line
+  }, [chat]);
 
   const setActiveChat = () => {
     dispatch(setActiveChatAction(chat));
@@ -28,7 +29,11 @@ function UserChat({ chat }) {
 
   return (
     <div onClick={setActiveChat} className="user-chat">
-      {chatUser.profilePic ? <img src={chatUser.profilePic} /> : <CgProfile />}
+      {chatUser.profilePic ? (
+        <img src={chatUser.profilePic} alt="profileimg" />
+      ) : (
+        <CgProfile />
+      )}
 
       <div>
         <p>

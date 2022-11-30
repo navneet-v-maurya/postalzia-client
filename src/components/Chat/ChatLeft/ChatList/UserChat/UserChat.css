@@ -5,11 +5,12 @@
   align-items: center;
 }
 
-.user-chat > img {
+.user-chat > :nth-child(1) {
   width: 3rem;
   height: 3rem;
   object-fit: cover;
   border-radius: 50%;
+  color: gray;
 }
 
 .user-chat > div {

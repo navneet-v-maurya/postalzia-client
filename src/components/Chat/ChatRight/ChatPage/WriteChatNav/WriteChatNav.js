@@ -3,16 +3,14 @@ import "./WriteChatNav.css";
 import { BsPlusLg } from "react-icons/bs";
 import InputEmoji from "react-input-emoji";
 
-function WriteChatNav() {
-  const [newMessage, setNewMessage] = useState("");
-  const handleChange = (newMessage) => {
-    setNewMessage(newMessage);
-  };
+function WriteChatNav({ newMessage, handleChange, handleSendMessage }) {
   return (
     <div className="write-chat">
       <BsPlusLg />
       <InputEmoji value={newMessage} onChange={handleChange} />
-      <button>Send</button>
+      <button type="submit" onClick={handleSendMessage}>
+        Send
+      </button>
     </div>
   );
 }

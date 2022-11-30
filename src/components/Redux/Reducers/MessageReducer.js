@@ -13,6 +13,8 @@ const messageReducer = (
       return { ...state, loading: false, error: false, messages: action.data };
     case "FETCH_MESSAGE_FAIL":
       return { ...state, loading: false, error: true };
+    case "REMOVE_MESSAGES":
+      return { ...state, loading: false, error: false, messages: [] };
     default:
       return state;
   }

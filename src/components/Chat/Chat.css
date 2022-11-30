@@ -2,5 +2,4 @@
   display: grid;
   grid-template-columns: 16rem auto;
   gap: 1.5rem;
-  margin-top: 0.3rem;
 }

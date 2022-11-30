@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getMessagesAction } from "../../../../Redux/Actions/MessageAction";
+import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+
 import "./Chats.css";
 import moment from "moment";
 
-function Chats() {
-  const [message, setMessage] = useState([]);
-  const activeChat = useSelector((state) => state.ChatReducer.activeChat);
-  const { user } = useSelector((state) => state.authReducer.authData);
-  const messages = useSelector((state) => state.messageReducer.messages);
-  const dispatch = useDispatch();
-  const getMessages = async () => {
-    dispatch(getMessagesAction(activeChat._id));
-  };
+function Chats({ messages, user }) {
+  const scroll = useRef();
 
   useEffect(() => {
-    getMessages();
-    setMessage(messages);
-  }, [activeChat]);
+    scroll.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start",
+    });
+  }, [messages]);
+
   return (
     <div className="chats">
-      {message.map((m) => {
+      {messages.map((m) => {
         return (
           <div
-            className={m.senderId === user._id ? "myChat" : "userChat"}
             key={m._id}
+            className={m.senderId === user._id ? "myChat" : "userChat"}
             style={
               m.senderId === user._id
                 ? { alignSelf: "flex-end" }
@@ -36,6 +33,7 @@ function Chats() {
           </div>
         );
       })}
+      <div ref={scroll} />
     </div>
   );
 }

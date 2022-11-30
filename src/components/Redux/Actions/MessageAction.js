@@ -10,3 +10,7 @@ export const getMessagesAction = (chatId) => async (dispatch) => {
     dispatch({ type: "FETCH_MESSAGE_FAIL" });
   }
 };
+
+export const removeMessagesAction = () => async (dispatch) => {
+  dispatch({ type: "REMOVE_MESSAGES" });
+};

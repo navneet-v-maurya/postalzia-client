@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import ChatLeft from "./ChatLeft/ChatLeft";
 import ChatRight from "./ChatRight/ChatRight";
@@ -19,6 +19,7 @@ function Chat() {
   };
   useEffect(() => {
     getUserChats();
+    // eslint-disable-next-line
   }, [user]);
 
   return (
