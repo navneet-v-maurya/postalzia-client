@@ -7,11 +7,12 @@ import { useSelector } from "react-redux";
 import { addMessageApi } from "../../../Api/MessageApi";
 import Loading from "../../../Loading/Loading";
 
-function ChatPage({ messages, activeChat }) {
+function ChatPage({ messages, activeChat, socket, onlineUsers }) {
   const { user } = useSelector((state) => state.authReducer.authData);
   const [newMessage, setNewMessage] = useState("");
   const [message, setMessage] = useState([]);
   const loading = useSelector((state) => state.messageReducer.loading);
+  const [receivedMessage, setReceivedMessage] = useState(null);
 
   const handleChange = (newMessage) => {
     setNewMessage(newMessage);
@@ -21,6 +22,20 @@ function ChatPage({ messages, activeChat }) {
     setMessage(messages);
   }, [messages]);
 
+  useEffect(() => {
+    socket.on("receive-message", (data) => {
+      setReceivedMessage(data);
+    });
+    // eslint-disable-next-line
+  }, [socket]);
+
+  useEffect(() => {
+    if (receivedMessage !== null) {
+      setMessage([...message, receivedMessage]);
+    }
+    // eslint-disable-next-line
+  }, [receivedMessage]);
+
   const handleSendMessage = async (e) => {
     e.preventDefault();
     const toBeSentMessage = {
@@ -28,13 +43,22 @@ function ChatPage({ messages, activeChat }) {
       senderId: user._id,
       chatId: activeChat._id,
     };
+    if (newMessage !== "") {
+      try {
+        const { data } = await addMessageApi(toBeSentMessage);
+        setMessage([...message, data]);
+        setNewMessage("");
+      } catch (error) {
+        console.log(error);
+      }
 
-    try {
-      const { data } = await addMessageApi(toBeSentMessage);
-      setMessage([...message, data]);
-      setNewMessage("");
-    } catch (error) {
-      console.log(error);
+      const receiverId = activeChat.members.filter((id) => id !== user._id);
+      const socketmessage = { ...toBeSentMessage };
+      socket.emit("send-message", {
+        socketmessage,
+        onlineUsers,
+        receiverId: receiverId[0],
+      });
     }
   };
 
