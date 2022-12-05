@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000";
+const URL = "https://postalzia-server.up.railway.app";
 
 export const getMessages = (chatId) => axios.get(`${URL}/message/${chatId}`);
 

@@ -10,6 +10,7 @@ const socket = io.connect("http://localhost:8800");
 function Chat() {
   const [chats, setChats] = useState([]);
   const { user } = useSelector((state) => state.authReducer.authData);
+  const activeChat = useSelector((state) => state.ChatReducer.activeChat);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
@@ -31,12 +32,12 @@ function Chat() {
   useEffect(() => {
     getUserChats();
     // eslint-disable-next-line
-  }, [user]);
+  }, [user, activeChat]);
 
   return (
     <div className="chat">
-      <ChatLeft chats={chats} />
-      <ChatRight socket={socket} onlineUsers={onlineUsers} />
+      <ChatLeft chats={chats} setChats={setChats} onlineUsers={onlineUsers} />
+      <ChatRight socket={socket} onlineUsers={onlineUsers} chats={chats} />
     </div>
   );
 }

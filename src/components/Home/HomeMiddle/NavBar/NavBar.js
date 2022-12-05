@@ -40,7 +40,7 @@ function NavBar({ setModalOpened, modalOpened }) {
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     const options = {
-      maxSizeMB: 0.5,
+      maxSizeMB: 0.1,
       maxWidthOrHeight: 1920,
       useWebWorker: true,
     };

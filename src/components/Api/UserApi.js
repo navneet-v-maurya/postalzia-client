@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000/user";
-const API = axios.create({ baseURL: "http://localhost:5000/user" });
+const URL = "https://postalzia-server.up.railway.app/user";
+const API = axios.create({
+  baseURL: "https://postalzia-server.up.railway.app/user",
+});
 
 export const getUser = (id) => API.get(`${URL}/${id}`);
 

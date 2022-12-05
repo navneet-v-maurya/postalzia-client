@@ -36,7 +36,7 @@ function InfoForm({ user, setModal }) {
     if (e.target.files && e.target.files[0]) {
       const imageFile = e.target.files[0];
       const options = {
-        maxSizeMB: 0.5,
+        maxSizeMB: 0.1,
         maxWidthOrHeight: 1920,
         useWebWorker: true,
       };

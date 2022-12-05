@@ -9,6 +9,7 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.3) 0px 00px 00px 0px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  position: relative;
 }
 
 .chat-list > p {
@@ -27,4 +28,25 @@
   opacity: 0.5;
   width: 90%;
   height: 0.08%;
+}
+
+.chat-list > button {
+  position: absolute;
+  width: 81%;
+  bottom: 1rem;
+  border: none;
+  background-color: rgb(88, 88, 188);
+  padding: 0.7rem 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+  font-size: small;
+  box-shadow: rgb(76, 74, 80) 0px 5px 10px, rgb(71, 66, 80) 0px 3px 3px;
+  transition-property: background-color color;
+  transition-duration: 0.5s;
+}
+
+.chat-list > button:hover {
+  background-color: rgb(109, 200, 231);
+  color: black;
 }

@@ -69,7 +69,7 @@ function ChatPage({ messages, activeChat, socket, onlineUsers }) {
       ) : (
         <>
           <div>
-            <UserChat chat={activeChat} />
+            <UserChat chat={activeChat} onlineUsers={onlineUsers} />
             <hr />
           </div>
           {loading ? (

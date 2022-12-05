@@ -5,7 +5,7 @@ import { getUser } from "../../../../Api/UserApi";
 import { CgProfile } from "react-icons/cg";
 import { setActiveChatAction } from "../../../../Redux/Actions/ChatAction";
 
-function UserChat({ chat }) {
+function UserChat({ chat, onlineUsers }) {
   const [chatUser, setChatUser] = useState({});
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authReducer.authData);
@@ -16,6 +16,12 @@ function UserChat({ chat }) {
       const { data } = await getUser(cUser);
       setChatUser(data);
     }
+  };
+
+  const checkOnlineStatus = (chat) => {
+    const chatMember = chat.members.find((member) => member !== user._id);
+    const online = onlineUsers.find((user) => user.userId === chatMember);
+    return online ? true : false;
   };
 
   useEffect(() => {
@@ -39,7 +45,7 @@ function UserChat({ chat }) {
         <p>
           {chatUser.firstName} {chatUser.lastName}
         </p>
-        <p>Online</p>
+        <p> {checkOnlineStatus(chat) ? "Online" : "Offline"}</p>
       </div>
     </div>
   );

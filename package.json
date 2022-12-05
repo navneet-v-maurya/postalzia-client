@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "https://postalzia-server.up.railway.app",
   "dependencies": {
     "@mantine/core": "^5.7.0",
     "@testing-library/jest-dom": "^5.16.5",

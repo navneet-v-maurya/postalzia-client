@@ -25,7 +25,6 @@ function FollowingCard() {
           }
         })}
       </div>
-      <p>Show more....</p>
     </div>
   );
 }

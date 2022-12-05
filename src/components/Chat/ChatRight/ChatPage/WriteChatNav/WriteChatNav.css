@@ -1,8 +1,11 @@
 .write-chat {
+  width: 90%;
+  position: absolute;
   display: flex;
   padding-bottom: 0.5rem;
   align-items: center;
   justify-content: space-between;
+  bottom: 1.5rem;
 }
 
 .write-chat > :nth-child(1) {

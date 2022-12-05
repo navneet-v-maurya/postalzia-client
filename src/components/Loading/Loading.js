@@ -15,8 +15,9 @@ function Loading({ loadinType, auth }) {
     if (auth) {
       setTimeout(() => {
         seterror(true);
-      }, 10000);
+      }, 30000);
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -30,7 +31,7 @@ function Loading({ loadinType, auth }) {
         </div>
       )}
       {error ? (
-        <img src={poolBird} />
+        <img src={poolBird} alt="Error" />
       ) : (
         <div className="scene">
           <div className="plane">
