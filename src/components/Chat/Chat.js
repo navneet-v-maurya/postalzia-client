@@ -5,7 +5,7 @@ import ChatRight from "./ChatRight/ChatRight";
 import { useSelector } from "react-redux";
 import { userChats } from "../Api/ChatApi";
 import io from "socket.io-client";
-const socket = io.connect("http://localhost:8800");
+const socket = io.connect("https://postalzia-server.up.railway.app");
 
 function Chat() {
   const [chats, setChats] = useState([]);
